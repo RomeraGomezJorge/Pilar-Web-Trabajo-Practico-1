@@ -1,55 +1,77 @@
-# Proyecto pilar-web - Trabajo Práctico 1
+# Proyecto pilar-web - Trabajo Práctico 2
 
-Este repositorio contiene el código correspondiente al Trabajo Práctico 1 del curso, en el cual se desarrolló un proyecto React llamado **pilar-web**. El objetivo principal del proyecto era implementar una interfaz de usuario que cumpla con los siguientes requisitos:
+Este repositorio contiene el código correspondiente al Trabajo Práctico 2 del curso, en el cual se continuó el
+desarrollo del proyecto React llamado pilar-web, implementando un CRUD para tareas "todo" utilizando Redux. A
+continuación, se detalla cómo se llevaron a cabo las tareas requeridas en el trabajo práctico:
 
-## Layout
+## Redux Implementation
 
-El proyecto incluye los siguientes componentes de diseño:
+En este trabajo práctico, se implementó la gestión de estado global utilizando Redux. Se crearon los siguientes
+elementos:
 
-- **TopBar:** Encabezado de la página que contiene un icono para abrir/cerrar el drawer, el título "Pilarweb" y un avatar para abrir/cerrar el popmenú.
+- **Constants**: Se definieron constantes para las acciones que representan operaciones del CRUD, como `ADD_TODO`
+  , `TOGGLE_TODO`, y `DELETE_TODO`.
 
-- **SideBar:** Panel lateral de navegación que consta de dos secciones: "Home" (navega a la página Dashboard) y "Pages" (contiene enlaces a las páginas Todo y Fetchlist).
+- **State**: Se creó un estado inicial en el reducer para almacenar la lista de tareas "todo". Cada tarea contiene
+  información como su nombre, estado de completado y un identificador único.
 
-- **Popmenú:** Menú emergente que se activa al hacer clic en el avatar del header. Contiene una opción que lleva a la página Dashboard.
+- **Selectors**: Se implementaron selectores para filtrar y obtener información específica del estado global. Por
+  ejemplo, se crearon selectores para obtener las tareas completadas y pendientes.
 
-## Páginas
+- **Actions**: Se desarrollaron acciones que representan las operaciones del CRUD, como agregar una tarea, marcar una
+  tarea como completada y eliminar una tarea.
 
-El proyecto incluye las siguientes páginas:
+- **Reducer**: Se implementó un reducer que maneja las acciones correspondientes para actualizar el estado global de las
+  tareas "todo". Cada acción modifica el estado de acuerdo con la operación realizada.
 
-- **Dashboard:** Página de inicio que contiene dos tarjetas, cada una con un título e icono. Estas tarjetas permiten la navegación a las páginas Todo y Fetchlist, respectivamente.
+## Página Todo
 
-- **Todo:** Página que presenta una tarjeta contenedora y muestra el título de la página.
+En la página "Todo", se implementaron las siguientes funcionalidades:
 
-- **Fetchlist:** Página que también incluye una tarjeta contenedora y muestra el título de la página.
+- **Formulario para Crear Tareas**: Se agregó un formulario que permite al usuario ingresar el nombre de una nueva tarea
+  y agregarla a la lista.
 
-## Navegación
+- **Listado de Tareas**: Las tareas agregadas se muestran dentro de una tarjeta. Cada tarea renderizada contiene un
+  checkbox que permite marcarla como completada, el nombre de la tarea y un botón para eliminar la tarea.
 
-La navegación dentro del proyecto se logra a través de los siguientes elementos:
+- **Operaciones del CRUD Reflejadas Globalmente**: Todas las operaciones de crear, marcar como completada y eliminar
+  tareas se reflejan en el estado global de Redux.
 
-- **Drawer:** El drawer proporciona enlaces directos a la página Dashboard, así como a las páginas Todo y Fetchlist a través de la sección "Pages".
+## Página Dashboard
 
-- **Popmenú:** El popmenú proporciona un enlace a la página Dashboard, permitiendo una navegación rápida.
+En la página "Dashboard", se implementaron dos tarjetas en la parte superior:
 
-- **Tarjetas en Dashboard:** En la página Dashboard, hay dos tarjetas que sirven como enlaces a las páginas Todo y Fetchlist.
+- **Tarjeta Tareas Completadas**: Esta tarjeta muestra la cantidad de tareas completadas en relación con el total de
+  tareas. Consumiendo datos del estado global y utilizando los selectores correspondientes, se filtraron las tareas para
+  obtener el número de tareas completadas y se mostró esta información en la tarjeta.
 
-## Estilo
+- **Tarjeta Tareas Pendientes**: Similar a la tarjeta de tareas completadas, esta tarjeta muestra la cantidad de tareas
+  pendientes en relación con el total de tareas.
 
-El diseño de las interfaces de usuario se ha desarrollado siguiendo las pautas y explicaciones proporcionadas en clase. Se ha dado preferencia a la creatividad y al propio criterio para aplicar los estilos.
+Ambas tarjetas se actualizan automáticamente cuando se realizan operaciones de CRUD en la página "Todo" debido a la
+naturaleza global del estado en Redux.
 
-## Estructura del Repositorio
+## Capturas de Pantalla
 
-El repositorio está organizado de la siguiente manera:
+A continuación, se presentan algunas capturas de pantalla que ilustran cómo se ve el proyecto en ejecución:
 
-- **`src/`**: Contiene los archivos fuente del proyecto.
-  - **`layout/`**: Carpeta que alberga los componentes reutilizables utilizados en el proyecto.
-  - **`pages/`**: Contiene las implementaciones de las diferentes páginas del proyecto.
-  - **`AppRouter.js/`**: Contiene la configuración de enrutamiento para la aplicación React.
-  - **`App.js`**: Punto de entrada de la aplicación React.
-  - **`index.js`**: Archivo principal que renderiza la aplicación en el DOM.
+1. **Página Todo**:
+   ![Captura de pantalla de la página Todo](https://i.imgur.com/zVY48am.png)
+
+2. **Página Dashboard**:
+   ![Captura de pantalla de la página Dashboard](https://i.imgur.com/pp0MwDP.png)
+
+## Estilo y Estructura del Repositorio
+
+El diseño de las interfaces de usuario se ha mantenido coherente con el estilo establecido en el Trabajo Práctico 1,
+utilizando estilos similares para mantener la coherencia visual en todo el proyecto. La estructura del repositorio se ha
+mantenido organizada en las carpetas "src/layout" y "src/pages", siguiendo la misma estructura establecida en el Trabajo
+Práctico 1.
 
 ## Instrucciones de Uso
 
 1. Clonar este repositorio en su máquina local.
 2. Instalar las dependencias necesarias ejecutando `npm install` en la raíz del proyecto.
-3. Ejecutar la aplicación con `npm start`.
-4. La aplicación estará disponible en su navegador en la dirección [http://localhost:3000](http://localhost:3000).
+3. Cambiar al branch "tp2" utilizando el comando `git checkout tp2`.
+4. Ejecutar la aplicación con `npm start`.
+5. La aplicación estará disponible en su navegador en la dirección [http://localhost:3000](http://localhost:3000).
