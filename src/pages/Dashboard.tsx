@@ -6,7 +6,7 @@ import React from 'react';
 import CancelIcon from '@mui/icons-material/Cancel';
 import {TaskStatusCard} from './components/Dashboard/TaskStatus.card';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import {ShortcutCard} from './components/Dashboard/ShortcutCard'
+import {ShortcutCard} from './components/Dashboard/Shortcut.card'
 
 export const Dashboard = () => {
   const todos = useSelector(appSelector.todo)
